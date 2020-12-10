@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, json, render_template, jsonify
 from config import Config
 
 app = Flask(__name__)
@@ -13,6 +13,17 @@ def hello():
 @app.route("/template")
 def template_view():
     return render_template("first.html")
+
+@app.route("/json")
+def json_view():
+    response = {
+        "status" : True,
+        "Data": {
+            "some_data" : [1, 2, 3, 4]
+        },
+        "message" : "Response from JSON Endpoint."
+    }
+    return jsonify(response)
 
 
 if __name__=='__main__':
