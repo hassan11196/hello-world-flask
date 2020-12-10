@@ -25,6 +25,11 @@ def json_view():
     }
     return jsonify(response)
 
+@app.route("/layout")
+def layout():
+    return render_template("index.html")
+
+
 
 if __name__=='__main__':
     app.run()
